@@ -1,0 +1,42 @@
+body{
+  background-color: #a0d4ff;
+}
+
+p{color:white;}
+
+.intro{
+  color:white;
+  margin-top:15%;
+  text-align: center;
+}
+
+.input{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#from{
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+#to{
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
+#convert_button{
+  margin-top:20px;
+  border-radius: 100px;
+  border-color: white;
+  background-color: #a0d4ff;
+  color: white;
+}
+
+#convert_button:hover{
+  border-radius: 100px;
+  border-color: white;
+  background-color: white;
+  color: #a0d4ff;
+}

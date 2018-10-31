@@ -13,8 +13,8 @@ $(document).ready(function() {
       // exchange rata data is stored in json.rates
 
       for (var key in currencySymbols) {
-        $('#from').append("<option value='" + currencySymbols[key] + "'> " + currencySymbols[key] + " </option>")
-        $('#to').append("<option value='" + currencySymbols[key] + "'> " + currencySymbols[key] + " </option>")
+        $('#from').append("<option value='" + key + "'>" + key + "</option>")
+        $('#to').append("<option value='" + key + "'>" + key + "</option>")
         //alert(currencySymbols[key]);
 
       }
@@ -23,20 +23,30 @@ $(document).ready(function() {
   });
 
 
-  $('#fromnum').on("input",function() {
-    $('#tonum').val($('#fromnum').val());
+  $('#fromnum').on("input", function() {
+    if ($("#from").children("option").filter(":selected").text() === "Choose..." || $("#to").children("option").filter(":selected").text() === "Choose...") {
+
+    } else {
+      var from = $("#from").children("option").filter(":selected").text();
+      var to = $("#to").children("option").filter(":selected").text();
+      var amount = $('#fromnum').val();
+      var out = 0;
+
+      var endpoint = 'convert';
+      $.ajax({
+        url: 'http://data.fixer.io/api/latest?access_key=1972a0e4b17f2acb6b1fc1e053eb13a2',
+        dataType: 'jsonp',
+        success: function(json) {
+          var call = json.rates;
+
+          var out = amount / call[from];
+          out = out * call[to]
+          $('#tonum').val(Math.round(out*100)/100);
+
+        }
+      });
+    }
+
+
   });
-
-  $("#convert_button").click(function() {
-    alert("Hello!");
-  });
-
-
-
-
-
-
-
-
-
 });

@@ -19,11 +19,15 @@ p{color:white;}
 #from{
   margin-left: 0;
   margin-top: 10px;
+  width:100%;
 }
 
 #to{
   margin-top: 10px;
   margin-left: 0px;
+  margin-left: 50px;
+  width:100%;
+
 }
 
 #convert_button{

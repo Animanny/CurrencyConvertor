@@ -13,8 +13,8 @@ $(document).ready(function() {
       // exchange rata data is stored in json.rates
 
       for (var key in currencySymbols) {
-         $('#from').append("<option value='" + currencySymbols[key] + "'> " + currencySymbols[key] + " </option>")
-         $('#to').append("<option value='" + currencySymbols[key] + "'> " + currencySymbols[key] + " </option>")
+        $('#from').append("<option value='" + currencySymbols[key] + "'> " + currencySymbols[key] + " </option>")
+        $('#to').append("<option value='" + currencySymbols[key] + "'> " + currencySymbols[key] + " </option>")
         //alert(currencySymbols[key]);
 
       }
@@ -23,12 +23,13 @@ $(document).ready(function() {
   });
 
 
+  $('#fromnum').on("input",function() {
+    $('#tonum').val($('#fromnum').val());
+  });
 
   $("#convert_button").click(function() {
     alert("Hello!");
   });
-
-
 
 
 

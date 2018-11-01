@@ -31,12 +31,13 @@ $(document).ready(function() {
 
       var endpoint = 'convert';
       $.ajax({
-        url: 'http://data.fixer.io/api/latest?access_key=1972a0e4b17f2acb6b1fc1e053eb13a2',
-        dataType: 'jsonp',
+        url: 'https://api.exchangeratesapi.io/latest?base=USD',
+        dataType: 'json',
         success: function(json) {
           var call = json.rates;
 
           var out = amount / call[from];
+
           out = out * call[to]
           $('#tonum').val(Math.round(out*100)/100);
 

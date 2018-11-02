@@ -1,15 +1,17 @@
 $(document).ready(function() {
-  // set endpoint and your access key
 
-  // get the most recent exchange rates via the "latest" endpoint:
   $.ajax({
     url: 'https://api.exchangeratesapi.io/latest?base=USD',
     dataType: 'json',
     success: function(json) {
       var currencySymbols = json.rates;
+      var sorted = {};
+      Object.keys(currencySymbols).sort().forEach(function(key) {
+        sorted[key] = currencySymbols[key];
+      });
       // exchange rata data is stored in json.rates
 
-      for (var key in currencySymbols) {
+      for (var key in sorted) {
         $('#from').append("<option value='" + key + "'>" + key + "</option>")
         $('#to').append("<option value='" + key + "'>" + key + "</option>")
         //alert(currencySymbols[key]);
@@ -21,8 +23,7 @@ $(document).ready(function() {
 
 
   $('#fromnum').on("input", function() {
-    if ($("#from").children("option").filter(":selected").text() === "Choose..." || $("#to").children("option").filter(":selected").text() === "Choose...") {
-    } else {
+    if ($("#from").children("option").filter(":selected").text() === "Choose..." || $("#to").children("option").filter(":selected").text() === "Choose...") {} else {
       var from = $("#from").children("option").filter(":selected").text();
       var to = $("#to").children("option").filter(":selected").text();
       var amount = $('#fromnum').val();
@@ -46,8 +47,7 @@ $(document).ready(function() {
   });
 
   $('#tonum').on("input", function() {
-    if ($("#from").children("option").filter(":selected").text() === "Choose..." || $("#to").children("option").filter(":selected").text() === "Choose...") {
-    } else {
+    if ($("#from").children("option").filter(":selected").text() === "Choose..." || $("#to").children("option").filter(":selected").text() === "Choose...") {} else {
       var from = $("#to").children("option").filter(":selected").text();
       var to = $("#from").children("option").filter(":selected").text();
       var amount = $('#tonum').val();
@@ -71,8 +71,7 @@ $(document).ready(function() {
   });
 
   $('#from').change(function() {
-    if ($("#from").children("option").filter(":selected").text() === "Choose..." || $("#to").children("option").filter(":selected").text() === "Choose...") {
-    } else {
+    if ($("#from").children("option").filter(":selected").text() === "Choose..." || $("#to").children("option").filter(":selected").text() === "Choose...") {} else {
       var from = $("#from").children("option").filter(":selected").text();
       var to = $("#to").children("option").filter(":selected").text();
       var amount = $('#fromnum').val();
@@ -94,9 +93,9 @@ $(document).ready(function() {
       });
     }
   });
+
   $('#to').change(function() {
-    if ($("#from").children("option").filter(":selected").text() === "Choose..." || $("#to").children("option").filter(":selected").text() === "Choose...") {
-    } else {
+    if ($("#from").children("option").filter(":selected").text() === "Choose..." || $("#to").children("option").filter(":selected").text() === "Choose...") {} else {
       var from = $("#from").children("option").filter(":selected").text();
       var to = $("#to").children("option").filter(":selected").text();
       var amount = $('#fromnum').val();
